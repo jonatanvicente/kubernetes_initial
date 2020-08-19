@@ -1,0 +1,24 @@
+apiVersion: apps/v1   #apigroup/version (al ejecutar kubectl api-resources y kubectl/api-versions nos indica prefijo, etc)
+kind: ReplicaSet #obtener en kubectl/api-resources
+metadata:
+  name: rs-test
+  labels: #pertenecen al replicaset, NO a los pods
+    app: rs-test 
+spec:
+  # modifica las réplicas según tu caso de uso
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pod-label
+  template: #propiedades específicas de los PODS
+    metadata:
+      labels:
+        app: pod-label
+    spec:
+      containers:
+          - name: cont1
+            image: python:3.6-alpine
+            command: ['sh', '-c', 'echo cont1 > index.html && python -m http.server 8082']
+          - name: cont2
+            image: python:3.6-alpine
+            command: ['sh', '-c', 'echo cont2 > index.html && python -m http.server 8083']

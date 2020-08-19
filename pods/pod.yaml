@@ -1,4 +1,4 @@
-apiVersion: v1 #kubectl api-versions (empleamos la última)
+apiVersion: v1 #kubectl api-versions (empleamos la última). No tiene prefijo (correspondiente a api-group, se ven en kubectl api-resources)
 kind: Pod #kubectl api-resources | grep Pod (para seleccionar la denominación correcta de tipo)
 metadata:
   name: podtest2
