@@ -1,0 +1,21 @@
+apiVersion: apps/v1 #apigroup, visible con kubectl api-resources
+kind: Deployment #visible con kubectl api-resources
+metadata:
+  name: deployment-test
+  labels:
+    app: front
+spec: #ReplicaSet
+  replicas: 3
+  selector: #label que el replicaSet utilizará para encontrar los pods
+    matchLabels:
+      app: front
+  template: #pod que crearemos
+    metadata:
+      labels:
+        app: front #debe cumplir con la label de arriba
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        #ports:
+        #- containerPort: 80 #qué puerto está utilizando este container. Útil para los services (podremos agrupar pods)
