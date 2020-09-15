@@ -55,3 +55,7 @@
 	- Creación de Deployment. <b>kubectl apply -f dep.yaml</b>
 	- Deployment visible con <b>kubectl get deployment</b>
 		- Labels visibles con <b>kubectl get deployment --show-labels</b>
+- <b>dep2.yaml</b>
+	- Actualización de Deployment sobre dep.yaml
+
+			
