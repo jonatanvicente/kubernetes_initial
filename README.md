@@ -43,7 +43,7 @@
 		- Utilización de apiVersion y labels
 		- Se crea con <b>kubectl apply -f [nombreFile].yaml</b>
 		- Listamos con kubectl get replicaset o <b>kubectl get rs</b>
-	- <b>Si eliminamos a mano un pod con kubectl delete pod [nombreCompletoPod] --> ReplicaSet lo vuelve a crear</b>
+	- <b>Si eliminamos a mano un pod con kubectl delete pod [nombrnieCompletoPod] --> ReplicaSet lo vuelve a crear</b>
 	- <b>Corregimos las propiedades de replicaset.yaml y fijamos a 2 el numero de replicas.</b>	
 	 	- Al ejecutar de nuevo <b>kubectl apply -f replicaset.yaml</b>, el replicaSet <b>elimina</b> los redundantes para dejar en funcionamiento los deseados (2).
 
@@ -67,4 +67,20 @@
 	- Ejecutamos con <b>kubectl apply -f dep3.yaml</b>
 - <b>dep4.yaml</b>
 	- Inclusión de parámetro revisionHistoryLimit a 1 para modificación del máximo de registros de histórico (por default es 10).
+	- Eliminamos Deployment con <b>kubectl apply -f dep4.yaml</b>
+
+
+##### Change Cause (dep5.yaml)
+
+- Elemento que aparece al mostrar el history en Deployments con <b>kubectl rollout history deployment [deploymentName]</b>
+- Contiene metadata para añadir CHANGE-CAUSE (kubernetes.io/change-cause)	
+
+
+#### Rollback de un despliegue (dep6.yaml)
+
+- File incorrecto (que apunta a una imagen que no existe) para forzar un rollback.
+- Ejecutamos <b>kubectl apply -f dep6.yaml </b> (forzado error)
+- <b>kubectl get pods<b> muestra el error
+- <b>kubectl rollout history deployment deployment-test</b> nos indica el historial (para hacer el rollback)
+	
 			

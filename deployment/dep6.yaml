@@ -1,11 +1,12 @@
 apiVersion: apps/v1 
 kind: Deployment 
 metadata:
+  annotations:
+    kubernetes.io/change-cause: "Error, fake"
   name: deployment-test
   labels:
     app: front
 spec:
-  revisionHistoryLimit: 1
   replicas: 3
   selector:
     matchLabels:
@@ -17,6 +18,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:alpine
+        image: nginx:testfake #error forzado
         ports:
-        - containerPort: 70 
+        - containerPort: 110 
