@@ -83,7 +83,15 @@
 - <b>kubectl get pods<b> muestra el error
 - <b>kubectl rollout history deployment deployment-test</b> nos indica el historial (para hacer el rollback)
 	
-			
 
 ### Services (folder service)
 
+- Ver file svc.yaml
+- Podemos añadir en el file distintos tipos de resources que se crearán de manera secuencial
+- Mapeo de puertos y secuencia de entrada (file svc.yaml):
+	- IP del service: Kubernetes garantizará la IP del service (que no cambia)
+	- El port del service --> spec > ports > port
+	- Ports de los pods adonde redirige el Service --> spec > ports > targetPort
+
+	### OJO NO FUNCIONA LA CREACIÓN DE TODOS LOS OBJETOS DENTRO DEL MISMO File
+	### VER https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/

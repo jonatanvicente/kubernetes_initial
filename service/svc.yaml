@@ -2,18 +2,32 @@ apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: deployment-test
-  labels:
+  labels: #labels del Deployment
     app: front
 spec: 
   replicas: 3
   selector: 
-    matchLabels:
+    matchLabels: #labels del ReplicaSet
       app: front
-  template: 
+  template: #templates de los pods
     metadata:
-      labels:
+      labels: #labels de los pods
         app: front 
     spec:
       containers:
-      - name: nginx
+      - name: nginx #nginx corre por defecto en el puerto 80
         image: nginx:alpine
+---
+apiVersion: v1 #kubectl api-versions o kubectl api-resources, no tiene api-group
+kind: Service
+metadata:
+  name: my-service
+  labels:
+    app: front
+spec:
+  selector: #label que utilizaremos para observar los pods
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 8080 #puerto en el que el Servicio estará escuchando
+      targetPort: 80 #qué puerto dentro del pod voy a consumir: cuando alguien consuma [IP_service]:[port] --> a qué puerto lo vamos a redireccionar. En este caso, al puerto 80 de cada pod (por donde sale nginx)
