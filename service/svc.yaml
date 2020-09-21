@@ -26,7 +26,7 @@ metadata:
     app: front
 spec:
   selector: #label que utilizaremos para observar los pods
-    app: MyApp
+    app: front
   ports:
     - protocol: TCP
       port: 8080 #puerto en el que el Servicio estará escuchando
