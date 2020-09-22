@@ -92,6 +92,8 @@
 	- IP del service: Kubernetes garantizará la IP del service (que no cambia)
 	- El port del service --> spec > ports > port
 	- Ports de los pods adonde redirige el Service --> spec > ports > targetPort
+- File svc2.yaml: Inclusión de tipo de cluster en el Service. Delete service anterior y aplicación del nuevo:
+	- kubectl delete -f svc.yaml
+	- kubectl apply -f svc2.yaml
+	
 
-	### OJO NO FUNCIONA LA CREACIÓN DE TODOS LOS OBJETOS DENTRO DEL MISMO File
-	### VER https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/
