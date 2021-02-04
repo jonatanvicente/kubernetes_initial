@@ -102,6 +102,9 @@
 	- <b>kubectl get svc</b> arroja ambos servicios (my-service y my-service1, además de kubernetes)
 		- Bajo PORT(S) vemos el port que expone NodePort (p.ej. 8080:31078/TCP)
 
-		PTE CAMBIAR A IMAGEN NGINX A SECAS A VER *****
+##### Tratamiento de error: no se visualiza IP del service desde fuera
 
+- OJO con las imagenes con base Alpine 3.3, tienen un bug declarado. Véase https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/	
+
+- Descomponemos nodeport.yaml => nodeport_deployment.yaml y nodeport_service.yaml.
 
